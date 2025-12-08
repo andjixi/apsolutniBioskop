@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\section*{Slučaj upotrebe: Registracija}
+\label{uc:registracija}
+\vspace{10pt}
+
+\begin{itemize}
+    \item \textbf{Kratak opis:} Korisnik kreira novi nalog u sistemu kako bi dobio pristup funkcionalnostima kao što su rezervacija karata i sakupljanje bonus poena.
+    
+    \item \textbf{Akteri:} 
+    \begin{itemize}
+        \item Korisnik (Gost)
+    \end{itemize}
+    \vspace{5pt}
+
+    \item \textbf{Preduslovi:} 
+    \begin{itemize}
+        \item Korisnik ima pristup internetu i aplikaciji.
+        \item Korisnik nije ulogovan.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Postuslovi:} 
+    \begin{itemize}
+        \item Novi korisnički nalog je uspešno kreiran, aktiviran i sačuvan u bazi podataka.
+        \item Korisnik je spreman za prijavu.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Osnovni tok:}
+    \begin{enumerate}
+        \item Korisnik bira opciju za registraciju na početnoj stranici aplikacije.
+        \item Sistem prikazuje formu za unos podataka (Ime, Prezime, Email, Lozinka, Broj telefona).
+        \item Korisnik unosi tražene podatke i potvrđuje unos. 
+        \item Sistem validira format unetih podataka (email, jačina lozinke).\\
+        \item Sistem proverava da li korisnik sa unetim email-om već postoji u bazi.\\
+        \item Sistem upisuje podatke o novom nalogu u bazu podataka sa statusom 'neaktivan'.
+        \item Sistem šalje potvrdni email (verifikacioni link) na unetu adresu.
+        \item Sistem obaveštava korisnika da proveri svoj email.
+        \item Korisnik pristupa svom email-u i klikće na verifikacioni link.
+        \item Sistem pronalazi nalog u bazi, menja status naloga na 'aktivan' i trajno beleži vreme aktivacije.
+        \item Sistem obaveštava korisnika o uspešnoj registraciji i aktivaciji.
+    \end{enumerate}
+
+    \newpage
+    \item \textbf{Podtokovi:} /
+    \vspace{5pt}
+    
+    \item \textbf{Alternativni tokovi:}
+    \begin{itemize}
+        \item \textbf{A1: Nevalidni podaci:} Sistem prikazuje grešku o neispravnom formatu podataka i traži od korisnika da ih ispravi. Korisnik ispravlja podatke i tok se vraća na korak 3 osnovnog toka.
+        \item \textbf{A2: Korisnik već postoji:} Sistem obaveštava korisnika da nalog sa tim email-om već postoji. Sistem nudi opciju za prelazak na prijavu (Login) ili reset lozinke.
+        \item \textbf{A3: Odustajanje:} Korisnik u bilo kom trenutku može odustati od registracije povratkom na početnu stranu.
+    \end{itemize}
+    \vspace{5pt}
+
+    \item \textbf{Specijalni zahtevi:}
+    \begin{itemize}
+        \item Lozinka mora sadržati minimum 8 karaktera, jedno veliko slovo i jedan broj.
+        \item Verifikacioni link važi 24 sata.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Dodatne informacije:} /
+    \vspace{5pt}
+\end{itemize}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
