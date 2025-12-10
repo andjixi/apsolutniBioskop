@@ -20,8 +20,8 @@
     \item \textbf{Preduslovi:} 
     \begin{itemize}
         \item Bioskop je otvoren i blagajna je u funkciji.
-        \item Korisnik je fizički prisutan na blagajni i bar jedan blagajnik je dostupan.
-        \item Sistem je povezan sa bazom podataka o projekcijama, cenama, raspoloživim sedištima, grickalicama i pićima. 
+        \item Korisnik je na blagajni i bar jedan blagajnik je dostupan.
+        \item Sistem je povezan sa bazom podataka. 
         \item Blagajnik je ulogovan u sistem.
     \end{itemize}
     \vspace{5pt}
@@ -35,21 +35,15 @@
     \item \textbf{Osnovni tok:}
     \begin{enumerate}
         \item Korisnik prilazi slobodnom blagajniku.
-        \item Korisnik bira jednu od opcija:
+        \item Korisnik može da izabere jednu od opcija:
             \begin{itemize}
                 \item Ukoliko želi da kupi kartu, prelazi se na podtok P1.
                 \item Ukoliko želi da preuzme prethodno rezervisanu kartu, prelazi se na podtok P2.
-                \item Ukoliko ne želi ni jedno ni drugo, prelazi se na korak 3.
+                \item Ukoliko želi da kupi grickalice ili piće, prelazi se na podtok P3.
             \end{itemize}
-        \item Blagajnik pita korisnika da li želi da kupi grickalice ili piće.
-            \begin{itemize}
-                \item Ukoliko korisnik ne želi ništa, prelazi se na korak 6.
-            \end{itemize}
-        \item Korisnik bira grickalice i/ili piće.
-        \item Blagajnik unosi izabrane artikle u porudžbinu.
         \item Sistem prikazuje ukupnu cenu za izabrane artikle.
-        \item Blagajnik traži od korisnika način plaćanja.
-        \item Korisnik bira način plaćanja i daje potrebne podatke.
+        \item Blagajnik traži od korisnika način plaćanja (keš ili kartica).
+        \item Korisnik bira način plaćanja i izvršava transakciju.
         \item Sistem obradjuje plaćanje.
     \end{enumerate}
 
@@ -58,12 +52,12 @@
     P1: Kupovina karte
     \begin{enumerate}
         \item Blagajnik pita korisnika za film i termin koji želi da pogleda. 
-        \item Blagajnik zahteva podatke o traženom filmu i terminu. 
+        \item Blagajnik pregleda podatke o traženom filmu i terminu. 
         \item Sistem prikazuje dostupna sedišta za izabrani termin. 
         \item Korisnik bira sedište/a koje želi da kupi. 
         \item Blagajnik unosi izabrana sedišta u sistem. 
         \item Blagajnik unosi karte u porudžbinu. 
-        \item Prelazi se na korak 4 osnovnog toka.
+        \item Prelazi se na korak 2 osnovnog toka.
     \end{enumerate}
 
     P2: Preuzimanje rezervisane karte
@@ -72,11 +66,18 @@
         \item Sistem pronalazi rezervaciju i prikazuje detalje. 
         \item Blagajnik proverava validnost rezervacije.
             \begin{itemize}
-                \item Ukoliko je rezervacija validna prelazi se na korak 4 osnovnog toka.
                 \item Ukoliko rezervacija nije validna, blagajnik obaveštava korisnika i vraća se na korak 2 osnovnog toka. 
             \end{itemize}
         \item Blagajnik potvrdjuje preuzimanje karte i unosi karte u porudžbinu. 
-        \item Prelazi se na korak 4 osnovnog toka.
+        \item Prelazi se na korak 2 osnovnog toka.
+    \end{enumerate}
+
+    P3: Kupovina grickalica i pića
+    \begin{enumerate}
+        \item Blagajnik pita korisnika koje grickalice i piće želi da kupi.
+        \item Korisnik bira artikle koje želi da kupi.
+        \item Blagajnik unosi izabrane artikle u porudžbinu.
+        \item Prelazi se na korak 2 osnovnog toka.
     \end{enumerate}
     \vspace{5pt}
     

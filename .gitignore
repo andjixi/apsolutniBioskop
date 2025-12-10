@@ -1,2 +1,9 @@
 *.lck
 *.bak*
+
+*.aux
+*.log
+*.fd
+*.fls
+*.fdb_latexmk
+*.synctex.gz
