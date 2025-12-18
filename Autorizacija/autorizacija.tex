@@ -1,5 +1,8 @@
 \documentclass{article}
-\usepackage{graphicx} 
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage{lmodern}
 
 \begin{document}
 
@@ -9,7 +12,7 @@
 
 \begin{itemize}
     \item \textbf{Kratak opis:} Proces identifikacije i provere prava pristupa aktera (korisnika ili zaposlenog) kako bi pristupili zaštićenim delovima sistema u skladu sa svojom ulogom.
-    \vspace{5pt}
+\vspace{10pt}
     
     \item \textbf{Akteri:} 
     \begin{itemize}
@@ -65,5 +68,41 @@
     \item \textbf{Dodatne informacije:} /
     \vspace{5pt}
 \end{itemize}
+
+\newpage
+\subsection*{Dijagram aktivnosti}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.5\textwidth]{autorizacija_dijagram_aktivnosti.jpg}
+}
+    \caption{Dijagram aktivnosti naloga  za autorizaciju korisnika}
+    \label{fig:aktivnost-autorizacija}
+\end{figure}
+
+\newpage
+\subsection*{Dijagram sekvence}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.5\textwidth]{autorizacija_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence naloga  za autorizaciju korisnika}
+    \label{fig:sekvenca-autorizacija}
+\end{figure}
+
+\newpage
+\subsection*{Dijagram stanja Naloga}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1\textwidth]{dijagram_stanja_naloga.jpg}
+}
+    \caption{Dijagram stanja naloga}
+    \label{fig:stanje-autorizacija}
+\end{figure}
 
 \end{document}
