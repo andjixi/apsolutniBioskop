@@ -1,5 +1,8 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % ako ne koristiš Xe/LuaLaTeX
+\usepackage{lmodern}
 
 \begin{document}
 
@@ -67,5 +70,40 @@
     \item \textbf{Dodatne informacije:} /
     \vspace{5pt}
 \end{itemize}
+
+\newpage
+\subsection*{Dijagram aktivnosti}
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.5\textwidth]{registracija_dijagram_aktivnosti.jpg}
+}
+\caption{Dijagram aktivnosti za registraciju korisnika}
+\label{fig:aktivnost-registracija}
+\end{figure}
+
+\newpage
+\subsection*{Dijagram sekvence}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.5\textwidth]{registracija_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence za registraciju korisnika}
+    \label{fig:sekvenca-registracija}
+\end{figure}
+
+\newpage
+\subsection*{Dijagram stanja Naloga}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=0.7\textwidth]{dijagram_stanja_nalog.jpg}
+}
+    \caption{Dijagram stanja naloga}
+    \label{fig:stanje-registracija}
+\end{figure}
 
 \end{document}
