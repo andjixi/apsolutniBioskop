@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc} % ako ne koristiš Xe/LuaLaTeX
 \usepackage{lmodern}
+\usepackage{tabularx}
 
 \begin{document}
 
@@ -37,6 +38,177 @@
 \include{Dodavanje Novih Zaposlenih/dodavanje_novih_zaposlenih}
 \include{Izmena Repertoara/izmena_repertoara}
 
+
+
+\section{Detaljna specifikacija modela baze podataka}
+
+Na osnovu slučaja upotrebe osmišljena je sledeća struktura baze podataka definišući klase:
+\begin{itemize}
+    \item Korisnik
+    \item Karta
+    \item Projekcija
+    \item Film
+    \item Bioskop
+    \item Sala
+    \item Sedište
+    \item Zaposlen (Sistem Administrator, Menadžer, Blagajnik)
+    \item Slobodna Sedišta
+\end{itemize}
+U nastavku je dat tabelarni prikaz svih entiteta sa njihovim atributima, tipovima podataka i kratkim opisom njihove uloge u sistemu.
+% --- TABELA KORISNIK ---
+\subsection{Tabela: Korisnik}
+Klasa Korisnik predstavlja online korisnika koji kupuje i rezerviše bioskopske karte.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+email (PK) & varchar(100) & Primarni ključ, jedinstvena adresa korisnika. \\ \hline
+lozinka & varchar(255) & Hash vrednost korisničke lozinke. \\ \hline
+ime & varchar(50) & Ime korisnika. \\ \hline
+prezime & varchar(50) & Prezime korisnika. \\ \hline
+brojTelefona & varchar(20) & Kontakt telefon korisnika. \\ \hline
+bonusPoeni & int & Broj sakupljenih bodova lojalnosti. \\ \hline
+\end{tabularx}
+
+% --- TABELA KARTA ---
+\subsection{Tabela: Karta}
+Klasa Karta sadrži podatke o karti koju je korisnik kupio. Jedan Korisnik može da kupi više karata, dok jedna karta može biti kupljena od strane jednog Korisnika.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+barkod (PK) & varchar(100) & Jedinstveni identifikator karte. \\ \hline
+idKorisnika (FK) & int & Referenca na korisnika koji je kupio kartu. \\ \hline
+idSedista (FK) & int & Referenca na rezervisano sedište. \\ \hline
+idProjekcija (FK) & int & Referenca na specifičan termin projekcije. \\ \hline
+validna & boolean & Status važnosti karte (da li je iskorišćena). \\ \hline
+rezervacija & boolean & Da li je karta samo rezervisana ili i plaćena. \\ \hline
+cena & int & Konačna cena karte sa uračunatim popustima. \\ \hline
+\end{tabularx}
+
+% --- TABELA PROJEKCIJA ---
+\subsection{Tabela: Projekcija}
+Glavna klasa sistema. Sadrži informacije o filmu koji se pušta u određenoj sali u određeno vreme kao i cenu karte. Povezana je sa tabelama: Film, Sala, Slobodna Sedišta, Bioskop
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+id (PK) & varchar(50) & Jedinstveni identifikator projekcije. \\ \hline
+idBioskopa (FK) & int & Referenca na bioskop u kojem se prikazuje. \\ \hline
+idSale (FK) & int & Referenca na salu u kojoj se prikazuje. \\ \hline
+idFilma (FK) & int & Referenca na film koji se emituje. \\ \hline
+cena & float & Osnovna cena karte za ovaj termin. \\ \hline
+vreme & dateTime & Tačan datum i vreme početka. \\ \hline
+\end{tabularx}
+
+
+
+% --- TABELA FILM ---
+\subsection{Tabela: Film}
+Klasa Film predstavlja film koji se može puštati u bioskopima.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+id (PK) & int & Identifikator filma. \\ \hline
+naziv & varchar(100) & Naslov filma. \\ \hline
+poster & varchar(255) & Putanja do slike postera ili ID slike. \\ \hline
+trajanje & time & Dužina trajanja filma u minutima. \\ \hline
+žanr & varchar(50) & Kategorija filma (npr. Akcija, Drama). \\ \hline
+\end{tabularx}
+
+% --- TABELA BIOSKOP ---
+\subsection{Tabela: Bioskop}
+Klasa Bioskop je jedna od glavnih klasa sistema. Referenca na nju se nalazi u klasama: Projekcija, Sala i Zaposleni.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+id (PK) & int & Jedinstveni identifikator objekta bioskopa. \\ \hline
+ime & varchar(100) & Naziv bioskopa. \\ \hline
+adresa & varchar(200) & Fizička adresa na kojoj se bioskop nalazi. \\ \hline
+telefon & varchar(20) & Kontakt telefon objekta. \\ \hline
+\end{tabularx}
+
+% --- TABELA SALA ---
+\subsection{Tabela: Sala}
+Klasa Sala predstavlja salu za projektovanje filmova u jednom bioskopu.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+id (PK) & int & Jedinstveni identifikator sale. \\ \hline
+idBioskopa (FK) & int & Referenca na bioskop kojem sala pripada. \\ \hline
+nazivSale & varchar(50) & Naziv ili broj sale (npr. "Sala 1", "IMAX"). \\ \hline
+sediste & varchar(255) & Opisni podatak o rasporedu ili kapacitetu. \\ \hline
+\end{tabularx}
+
+% --- TABELA SEDIŠTE ---
+\subsection{Tabela: Sedište}
+Klasa Sedište predstavlja jedno sedište u jednoj sali. Svaka sala ima više sedišta.
+\vspace{5pt}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+idSedista (PK) & int & Jedinstveni identifikator sedišta. \\ \hline
+idSale (FK) & int & Referenca na salu kojoj sedište pripada. \\ \hline
+red & int & Broj reda u sali. \\ \hline
+broj & int & Broj sedišta u redu. \\ \hline
+tip & TipSedišta & Referenca na enumeraciju TipSedišta. \\ \hline
+\end{tabularx}
+
+% --- TABELA ZAPOSLEN ---
+\subsection{Tabela: Zaposlen (Zajednička za Admin/Menadžer/Blagajnik)}
+Klasa Zaposleni predstavlja zaposlenog koji koristi sistem. Konkretizacijom ove klase izvodimo klase Administrator, Menadžer i Blagajnik.
+
+Administrator:
+Klasa Administrator predstavlja Sistem Administratora koji upravlja svim podacima u bazi.
+
+Menadžer:
+Klasa Menadžer predstavlja upravnika čiji je domen uprave jedan Bioskop i sve što je sa njim povezano.
+
+Blagajnik:
+Klasa Blagajnik predstavlja zaposlenog koji prodaje karte, grickalice i pića na blagajni bioskopa korisnicima koji nisu u sistemu.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+id (PK) & int & Identifikator zaposlenog. \\ \hline
+idBioskopa (FK) & int & Bioskop u kojem je zaposlen. \\ \hline
+ime & varchar(50) & Ime zaposlenog. \\ \hline
+prezime & varchar(50) & Prezime zaposlenog. \\ \hline
+jmbg & varchar(13) & Jedinstveni matični broj građanina. \\ \hline
+telefon & varchar(13) & Broj telefona. \\ \hline
+email & varchar(100) & Poslovna email adresa. \\ \hline
+datumZaposlenja & date & Datum zaposlenja. \\ \hline
+adresa & varchar(100) & Adresa zaposlenog. \\ \hline
+\end{tabularx}
+
+% --- TABELA SLOBODNA SEDIŠTA ---
+\subsection{Tabela: SlobodnaSedišta (Tabela stanja)}
+Klasa Stanje Sedišta predstavlja stanje svih sedišta jedne projekcije. Vezana je za klasu Sala preko idSale. Kada korisnik kupi ili rezerviše sedište za određenu projekciju njegovo stanje se menja.
+\vspace{5pt}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
+idProjekcije (FK) & int & Projekcija za koju se proverava zauzeće. \\ \hline
+idSedista (FK) & int & Sedište čije se stanje prati. \\ \hline
+stanje & StanjeSedišta & Trenutni status (Slobodno, Zauzeto, itd.). \\ \hline
+\end{tabularx}
+
+\subsection{Definicije Enumeracija}
+\begin{itemize}
+    \item \textbf{TipSedišta}: \{STANDARDNO, LJUBAVNO, KOŽNO, VIP\}
+    \item \textbf{StanjeSedišta}: \{SLOBODNO, IZABRANO, REZERVISANO, ZAUZETO\}
+\end{itemize}
 \begin{figure}[h!]
     \centering
     \makebox[\textwidth][c]{
