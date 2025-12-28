@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[serbian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % ako ne koristiš Xe/LuaLaTeX
+\usepackage{lmodern}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{dijagram_slucajeva_upotrebe.jpg}
+    \caption{Dijagram slučajeva upotrebe}
+    \label{fig:dijagram_slucajeva_upotrebe}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{dfd_dijagram_konteksta.jpg}
+    \caption{DFD dijagram konteksta}
+    \label{fig:dfd_dijagram_konteksta}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{dfd_dijagram_nivoa_0.jpg}
+    \caption{DFD dijagram nivoa 0}
+    \label{fig:dfd_dijagram_nivoa_0}
+\end{figure}
+
+\include{Online kupovina i rezervacija/online_kupovina_i_registracija}
+\include{Kupovina na blagajni/kupovina_na_blagajni}
+\include{Registracija/registracija}
+\include{Autorizacija/autorizacija}
+\include{Upravljanje Podacima/upravljanje_podacima}
+\include{Dodavanje Novih Zaposlenih/dodavanje_novih_zaposlenih}
+\include{Izmena Repertoara/izmena_repertoara}
+
+\begin{figure}[h!]
+    \centering
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.5\textwidth]{dijagram_klasa.jpg}
+    }
+    \caption{Dijagram klasa}
+    \label{fig:dijagram_klasa}
+\end{figure}
+
+\end{document}
