@@ -1,20 +1,77 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
+\usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage[serbian]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc} % ako ne koristiš Xe/LuaLaTeX
+\usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{tabularx}
+\usepackage{float}
+
+\title{Informacioni sistem bioskopa: Apsolutni bioskop\\ 
+\small{Dokumentacija u okviru projekta iz predmeta\\ Informacioni sistemi\\ Matematički fakultet}}
+\author{Marko Paunović, Bogdan Stojadinović , Anđela Jovanović \\ mi251039@alas.matf.bg.ac.rs \\ mi251028@alas.matf.bg.ac.rs \\ mi251035@alas.matf.bg.ac.rs\\}
+\date{Januar 2026.}
 
 \begin{document}
 
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Analiza sistema}
+
+\subsection{O čemu se radi u ovom projektu?}
+Ovaj rad je nastao kao deo projektnog zadatka na predmetu ``Informacioni sistemi'' na master studijama Matematičkog fakulteta. Glavna ideja bila je da teoriju o planiranju sistema primenimo u praksi i pokažemo kako se jedan poslovni proces može detaljno isplanirati.
+
+Napravili smo plan za informacioni sistem koji pomaže firmi da lakše prodaje svoje usluge i upravlja zaposlenima. Najviše smo se fokusirali na to kako da automatizujemo svakodnevne poslove (poput prodaje na blagajni) i kako da osiguramo da svako u sistemu vidi samo ono što mu je dozvoljeno. Da bismo sistem prikazali sa svih strana, koristili smo različite dijagrame: od opštih Use Case dijagrama, preko detaljnih dijagrama aktivnosti i sekvenci, pa sve do BPMN dijagrama koji pokazuju saradnju između ljudi i softvera.
+
+\subsection{Ko sve koristi sistem?}
+U našem sistemu postoje četiri glavne grupe korisnika, a svaka od njih ima svoju specifičnu ulogu:
+\begin{enumerate}
+    \item \textbf{Korisnik} (običan kupac ili klijent)
+    \item \textbf{Blagajnik} (osoba koja radi na prodajnom mestu)
+    \item \textbf{Menadžer} (osoba zadužena za tim i organizaciju)
+    \item \textbf{Sistem administrator} (tehnička podrška i kontrola sistema)
+\end{enumerate}
+
+\subsection{Šta korisnici zapravo mogu da rade?}
+Evo kratkog pregleda onoga što je svakoj grupi korisnika omogućeno u sistemu:
+\begin{enumerate}
+\item \textbf{Korisnik} \\
+On je tu da bi koristio usluge. Prvo se registruje i prijavljuje, a zatim može da pregleda ponudu, kupuje ili rezerviše ono što mu treba. Sistem brine o tome da su njegovi podaci sigurni i da niko drugi ne može da vidi njegovu istoriju kupovine ili lične informacije.
+
+\item \textbf{Blagajnik} \\
+Njegov posao je rad sa ljudima i kucanje računa. On proverava da li je neka usluga dostupna, vrši naplatu i izdaje potvrde korisnicima. Blagajnik vidi sve što je vezano za prodaju, ali nema pristup podacima o platama ili podešavanjima samog sistema.
+
+\item \textbf{Menadžer} \\
+On vodi računa o tome da sve funkcioniše kako treba. On ne kuca u sistem podatke o prodaji, već prati izveštaje. Kada se pojavi potreba za novim radnikom, on je taj koji šalje zvaničan zahtev administratoru. Njegov glavni zadatak u ovom modelu je da odobri i pokrene proces zapošljavanja.
+
+\item \textbf{Sistem administrator} \\
+On je najbitniji za sistem u tehničkom pogledu. On kreira naloge za nove zaposlene tek kada dobije zahtev od menadžera. Takođe, on brine o bezbednosti, to jest ako neko zaboravi lozinku ili mu nalog bude blokiran zbog previše pogrešnih pokušaja, administrator je tu da reši problem i vrati sistem u normalu.
+\end{enumerate}
+
+\vspace{5pt}
+
+\newpage
+\subsection{Dijagram slučajeva upotrebe}
+Ovaj dijagram prikazuje sve grupe korisnika i funkcije koje su im dostupne unutar sistema. On služi da se na početku jasno definišu granice sistema i šta svaka uloga može da uradi.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{dijagram_slucajeva_upotrebe.jpg}
     \caption{Dijagram slučajeva upotrebe}
     \label{fig:dijagram_slucajeva_upotrebe}
 \end{figure}
+
+\newpage
+\section{Dijagrami toka podataka}
+Dijagrami toka podataka (DFD) opisuju kako se informacije kreću kroz sistem, od samog unosa do njihovog skladištenja u bazi.
+
+\subsection{DFD dijagram konteksta}
+Dijagram konteksta prikazuje sistem kao jednu celinu u odnosu na okruženje. Na njemu se vidi samo razmena podataka sa korisnicima i bazom podataka, bez detalja o samoj obradi unutar softvera.
 
 \begin{figure}[h]
     \centering
@@ -23,23 +80,34 @@
     \label{fig:dfd_dijagram_konteksta}
 \end{figure}
 
+\newpage
+\subsection{DFD dijagram nivoa 0}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{dfd_dijagram_nivoa_0.jpg}
+    \includegraphics[width=0.935\textwidth]{dfd_dijagram_nivoa_0.jpg}
     \caption{DFD dijagram nivoa 0}
     \label{fig:dfd_dijagram_nivoa_0}
 \end{figure}
 
-\include{Online kupovina i rezervacija/online_kupovina_i_registracija}
-\include{Kupovina na blagajni/kupovina_na_blagajni}
-\include{Registracija/registracija}
-\include{Autorizacija/autorizacija}
-\include{Upravljanje Podacima/upravljanje_podacima}
-\include{Dodavanje Novih Zaposlenih/dodavanje_novih_zaposlenih}
-\include{Izmena Repertoara/izmena_repertoara}
+
+\newpage
+\section{Slučajevi upotrebe}
+\input{Online kupovina i rezervacija/online_kupovina_i_registracija}
+\newpage
+\input{Kupovina na blagajni/kupovina_na_blagajni}
+\newpage
+\input{Registracija/registracija}
+\newpage
+\input{Autorizacija/autorizacija}
+\newpage
+\input{Upravljanje Podacima/upravljanje_podacima}
+\newpage
+\input{Dodavanje Novih Zaposlenih/dodavanje_novih_zaposlenih}
+\newpage
+\input{Izmena Repertoara/izmena_repertoara}
 
 
-
+\newpage
 \section{Detaljna specifikacija modela baze podataka}
 
 Na osnovu slučaja upotrebe osmišljena je sledeća struktura baze podataka definišući klase:
@@ -55,6 +123,7 @@ Na osnovu slučaja upotrebe osmišljena je sledeća struktura baze podataka defi
     \item Slobodna Sedišta
 \end{itemize}
 U nastavku je dat tabelarni prikaz svih entiteta sa njihovim atributima, tipovima podataka i kratkim opisom njihove uloge u sistemu.
+
 % --- TABELA KORISNIK ---
 \subsection{Tabela: Korisnik}
 Klasa Korisnik predstavlja online korisnika koji kupuje i rezerviše bioskopske karte.
@@ -153,6 +222,7 @@ sediste & varchar(255) & Opisni podatak o rasporedu ili kapacitetu. \\ \hline
 \subsection{Tabela: Sedište}
 Klasa Sedište predstavlja jedno sedište u jednoj sali. Svaka sala ima više sedišta.
 \vspace{5pt}
+
 \begin{tabularx}{\textwidth}{|l|l|X|}
 \hline
 \textbf{Atribut} & \textbf{Tip} & \textbf{Opis} \\ \hline
