@@ -122,6 +122,16 @@ Na osnovu slučaja upotrebe osmišljena je sledeća struktura baze podataka defi
     \item Zaposlen (Sistem Administrator, Menadžer, Blagajnik)
     \item Slobodna Sedišta
 \end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.0\textwidth]{dijagram_klasa.jpg}
+        }
+        \caption{Dijagram klasa}
+        \label{fig:dijagram_klasa}
+    \end{figure}
+    
 U nastavku je dat tabelarni prikaz svih entiteta sa njihovim atributima, tipovima podataka i kratkim opisom njihove uloge u sistemu.
 
 % --- TABELA KORISNIK ---
@@ -279,14 +289,7 @@ stanje & StanjeSedišta & Trenutni status (Slobodno, Zauzeto, itd.). \\ \hline
     \item \textbf{TipSedišta}: \{STANDARDNO, LJUBAVNO, KOŽNO, VIP\}
     \item \textbf{StanjeSedišta}: \{SLOBODNO, IZABRANO, REZERVISANO, ZAUZETO\}
 \end{itemize}
-\begin{figure}[h!]
-    \centering
-    \makebox[\textwidth][c]{
-        \includegraphics[width=1.0\textwidth]{dijagram_klasa.jpg}
-    }
-    \caption{Dijagram klasa}
-    \label{fig:dijagram_klasa}
-\end{figure}
+
 
 \section{Arhitektura sistema}
 \begin{figure}[h]
@@ -295,5 +298,13 @@ stanje & StanjeSedišta & Trenutni status (Slobodno, Zauzeto, itd.). \\ \hline
     \caption{Dijagram komponenti}
     \label{fig:dijagram_komponenti}
 \end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{dijagram_isporucivanja.jpg}
+    \caption{Dijagram isporučivanja}
+    \label{fig:dijagram_isporucivanja}
+\end{figure}
+
 
 \end{document}
