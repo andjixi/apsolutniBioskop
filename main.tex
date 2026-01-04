@@ -126,12 +126,13 @@ Na osnovu slučaja upotrebe osmišljena je sledeća struktura baze podataka defi
 \begin{figure}[h!]
     \centering
     \makebox[\textwidth][c]{
-        \includegraphics[width=1.0\textwidth]{dijagram_klasa.jpg}
+        \includegraphics[width=1.2\textwidth]{dijagram_klasa.jpg}
         }
         \caption{Dijagram klasa}
         \label{fig:dijagram_klasa}
     \end{figure}
     
+\newpage
 U nastavku je dat tabelarni prikaz svih entiteta sa njihovim atributima, tipovima podataka i kratkim opisom njihove uloge u sistemu.
 
 % --- TABELA KORISNIK ---
@@ -292,6 +293,31 @@ stanje & StanjeSedišta & Trenutni status (Slobodno, Zauzeto, itd.). \\ \hline
 
 
 \section{Arhitektura sistema}
+
+Prilikom razmatranja arhitekture informacionog sistema cilj je bio napraviti jednostavnu, široko dostupnu, stabilnu i bezbednu aplikaciju. Izborom veb aplikacije obezbeđena je široka dostupnost jer je za njeno korišćenje potrebno samo da korisnik ima internet vezu na svom računaru ili mobilnom uređaju. Pažljivo vođenje računa prilikom izrade korisničkog interfejsa postiže se jednostavnost, dok se stabilnost i pre svega bezbednost ostvaruju izborom troslojne arhitekture gde se srednji (logički) sloj deli na klijentski i serverski deo.
+
+
+\begin{itemize}
+    \item \textbf{Prezentacioni sloj} (Presentation Layer) 
+    
+    \begin{itemize}
+        \item Predstavlja najviši sloj aplikacije i ima ulogu da korisniku prikaže vizuelnu reprezentaciju sadržaja na osnovu podataka koje dobija od nižeg sloja. Sastoji se od skupa HTML stranica koje su izgrađene uz pomoć HTML-a, CSS-a i JavaScript-a, a njihov detaljan izgled će biti prikazan u narednom poglavlju.
+    \end{itemize}
+
+    \item \textbf{Logički sloj} (Business Logic Layer)
+    \begin{itemize}
+        \item Predstavlja logički sloj servera i ima ulogu u prijemu zahteva koje klijent šalje kao i odgovaranju na iste. U okviru ovog sloja nalazi se i biznis logika celog sistema.
+        Realizacija implementacije sadržaće ASP.NET Core kontrolere koji će u odnosu na zahtev dobijen od strane klijentske strane obrađivati dobijene podatke i stupati u kontakt sa slojem podataka kada to bude potrebno. Za implementaciju koristićemo Controller-Service-Repository arhitekturni obrazac.
+    \end{itemize}
+    \item \textbf{Sloj podataka} (Data Access Layer)
+    \begin{itemize}
+        \item Tabele koje će se nalaziti u ovoj bazi podataka opisane su dijagramom klasa i detaljnom specifikacijom u prethodnom poglavlju. Podaci će biti skladišteni u memoriji na serverskom računaru, i to u relacionoj bazi podataka (PostgreSQL).
+    \end{itemize}
+\end{itemize}
+
+
+Na slici \ref{fig:dijagram_komponenti} nalazi se predlog arhitekture sistema prikazan kroz dijagram komponenti, dok slika \ref{fig:dijagram_isporucivanja} prikazuje dijagram isporučivanja koji detaljno opisuje kako su komponente raspoređene na različitim čvorovima sistema.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{dijagram_komponenti.jpg}
@@ -299,6 +325,7 @@ stanje & StanjeSedišta & Trenutni status (Slobodno, Zauzeto, itd.). \\ \hline
     \label{fig:dijagram_komponenti}
 \end{figure}
 
+\newpage
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{dijagram_isporucivanja.jpg}
