@@ -8,3 +8,57 @@
 *.fdb_latexmk
 *.synctex.gz
 *.toc
+
+
+#DEMO gitignore
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# testing
+coverage
+
+# next.js
+.next
+out
+build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# misc
+*.pem
+*.log
