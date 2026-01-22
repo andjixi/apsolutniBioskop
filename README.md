@@ -1,50 +1,73 @@
-# 🍿 Informacioni Sistem za Bioskop (Apsolutni Bioskop)
+# 🎬 Apsolutni Bioskop
 
-## 🎯 Opis Projekta
+Informacioni sistem za upravljanje poslovanjem multipleks bioskopa.
 
-Informacioni sistem za bioskop (Apsolutni bioskop) je kompletno softversko rešenje za upravljanje svim ključnim procesima u modernom multipleks bioskopu. Cilj projekta je da se automatizuje rad zaposlenih (menadžera, blagajnikā, šankerā) i pruži korisnicima jednostavno i efikasno rešenje za online kupovinu, rezervaciju mesta i pregled repertoara.
+## 📋 O projektu
 
-**Projekat je izrađen u okviru kursa Informacioni sistemi na Matematičkom fakultetu.**
+Projekat je izradjen u okviru kursa **Informacioni sistemi** na master studijama Matematickog fakulteta, Univerziteta u Beogradu.
 
-## 💡 Ključne Funkcionalnosti
+Sistem omogucava:
+- Online kupovinu i rezervaciju bioskopskih karata
+- Prodaju karata na blagajni
+- Upravljanje repertoarom i projekcijama
+- Administraciju korisnickih naloga i zaposlenih
+- Program lojalnosti sa bonus poenima
 
-Apsolutni bioskop pokriva tri glavne oblasti poslovanja:
+## 📄 Dokumentacija
 
-### 🎫 Upravljanje Prodajom i Klijentima
-* **Kupovina ulaznica putem interneta** (sa podrškom za sistem lojalnosti i skupljanje poena).
-* **Rezervacija ulaznica** online.
-* **Prodaja ulaznica** na licu mesta (blagajna).
-* **Prodaja grickalica** i pića (šank).
+Kompletna dokumentacija projekta nalazi se u fajlu `main.pdf` i ukljucuje:
+- Analizu sistema i identifikaciju korisnika
+- Dijagrame slucajeva upotrebe (Use Case)
+- Dijagrame toka podataka (DFD)
+- Detaljne specifikacije slucajeva upotrebe
+- Model baze podataka
+- Predlog arhitekture sistema
+- Prototip korisnickog interfejsa
 
-### 🎬 Upravljanje Repertoarom i Resursima
-* **Kreiranje i izmena rasporeda** projekcija.
-* **Unos i ažuriranje podataka** o novim filmovima.
-* **Upravljanje podacima** o bioskopskim salama i njihovim kapacitetima.
-* Sveobuhvatno **upravljanje sistemskim podacima** (podešavanje cena, popusta).
 
-### ⚙️ Administracija i Sistemska Podrška
-* **Registracija** novih korisnika i zaposlenih.
-* **Upravljanje autorizacijom** (dozvolama) za pristup različitim delovima sistema.
+## 🚀 Pokretanje demo aplikacije
 
-## 📁 Struktura Repozitorijuma
+Demo aplikacija je napravljena u Next.js framework-u i prikazuje prototip korisnickog interfejsa.
 
-Svi relevantni dokumenti i modeli su organizovani prema logičkim celinama:
+### Preduslovi
 
-| Direktorijum | Sadržaj |
-| :--- | :--- |
-| `DOKUMENTACIJA` | Svi tekstualni opisi zahteva, liste zahteva i finalni pisani dokument projekta. |
-| `MODELI` | Svi dijagrami (UML, DFD, BPMN) i modeli (ER, Klase, Arhitektura). |
-| `DEMO` | Skice i mockupi korisničkog interfejsa. |
-| `ADMINISTRACIJA` | Interna dokumentacija tima, raspodela zadataka i rokovi. |
+- Node.js (verzija 18 ili novija)
+- pnpm ili npm
+
+### Instalacija i pokretanje
+
+```bash
+# Pozicionirajte se u demo folder
+cd demo
+
+# Instalirajte zavisnosti
+pnpm install
+# ili ako koristite npm:
+npm install
+
+# Pokrenite razvojni server
+pnpm dev
+# ili:
+npm run dev
+```
+
+Aplikacija ce biti dostupna na adresi: http://localhost:3000
 
 ## 🛠 Tehnologije
 
-* **Modelovanje:** Visual Paradigm
+### Dokumentacija
+- LaTeX
+- Visual Paradigm
 
-## 👥 Tim
+### Demo aplikacija
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Radix UI komponente
 
-Ovaj projekat su razvili:
+## 👥 Autori
 
-* **Bogdan Stojadinović** - [@bogdans55](github.com)
-* **Marko Paunović** - [@markopaunovic14](github.com)
-* **Anđela Jovanović** - [@andjixi](github.com)
+- **Marko Paunovic** - [@markopaunovic14](https://github.com/markopaunovic14)
+- **Bogdan Stojadinovic** - [@bogdans55](https://github.com/bogdans55)
+- **Andjela Jovanovic** - [@andjixi](https://github.com/andjixi)
