@@ -1,22 +1,34 @@
 \documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
 \usepackage{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage[serbian]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage[serbian]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{tabularx}
+
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=cyan, citecolor=blue}
+
+\begin{document}
 
 \title{Informacioni sistem bioskopa: Apsolutni bioskop\\ 
 \small{Dokumentacija u okviru projekta iz predmeta\\ Informacioni sistemi\\ Matematički fakultet}}
 \author{Marko Paunović, Bogdan Stojadinović , Anđela Jovanović \\ mi251039@alas.matf.bg.ac.rs \\ mi251028@alas.matf.bg.ac.rs \\ mi251035@alas.matf.bg.ac.rs\\}
 \date{Januar 2026.}
 
-\begin{document}
-
 \maketitle
+
+\begin{abstract}
+U ovom radu predstavljen je informacioni sistem za upravljanje poslovanjem multipleks bioskopa pod nazivom \enquote{Apsolutni bioskop}. Sistem omogućava automatizaciju ključnih poslovnih procesa uključujući online kupovinu i rezervaciju karata, prodaju na blagajni, upravljanje repertoarom i administraciju korisničkih naloga. Rad obuhvata detaljnu analizu zahteva sistema sa identifikacijom četiri glavne grupe korisnika (korisnik, blagajnik, menadžer i sistem administrator) i prototip korisničkog interfejsa koji demonstrira osnovne funkcionalnosti sistema.
+\end{abstract}
 
 \tableofcontents
 
@@ -25,7 +37,7 @@
 \section{Analiza sistema}
 
 \subsection{O čemu se radi u ovom projektu?}
-Ovaj rad je nastao kao deo projektnog zadatka na predmetu ``Informacioni sistemi'' na master studijama Matematičkog fakulteta. Glavna ideja bila je da teoriju o planiranju sistema primenimo u praksi i pokažemo kako se jedan poslovni proces može detaljno isplanirati.
+Ovaj rad je nastao kao deo projektnog zadatka na predmetu \enquote{Informacioni sistemi} na master studijama Matematičkog fakulteta. Glavna ideja bila je da teoriju o planiranju sistema primenimo u praksi i pokažemo kako se jedan poslovni proces može detaljno isplanirati.
 
 Napravili smo plan za informacioni sistem koji pomaže firmi da lakše prodaje svoje usluge i upravlja zaposlenima. Najviše smo se fokusirali na to kako da automatizujemo svakodnevne poslove (poput prodaje na blagajni) i kako da osiguramo da svako u sistemu vidi samo ono što mu je dozvoljeno. Da bismo sistem prikazali sa svih strana, koristili smo različite dijagrame: od opštih Use Case dijagrama, preko detaljnih dijagrama aktivnosti i sekvenci, pa sve do BPMN dijagrama koji pokazuju saradnju između ljudi i softvera.
 
@@ -58,7 +70,7 @@ On je najbitniji za sistem u tehničkom pogledu. On kreira naloge za nove zaposl
 
 \newpage
 \subsection{Dijagram slučajeva upotrebe}
-Ovaj dijagram prikazuje sve grupe korisnika i funkcije koje su im dostupne unutar sistema. On služi da se na početku jasno definišu granice sistema i šta svaka uloga može da uradi.
+Slika \ref{fig:dijagram_slucajeva_upotrebe} prikazuje sve grupe korisnika i funkcije koje su im dostupne unutar sistema. On služi da se na početku jasno definišu granice sistema i šta svaka uloga može da uradi.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{dijagram_slucajeva_upotrebe.jpg}
@@ -336,12 +348,16 @@ Na slici \ref{fig:dijagram_komponenti} nalazi se predlog arhitekture sistema pri
 \newpage
 \section {Korisnički interfejs}
 
+Korisnik ulaskom na sajt ApsolutniBioskop vidi početnu stranu sa logom i sloganom "Rezervišite karte za bioskop online". Odavde može kliknuti na dugme \enquote{Pogledaj repertoar} da pregleda dostupne filmove ili \enquote{Prijava} da se uloguje na svoj nalog.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{gui/pocetna_strana.png}
     \caption{Početna stranica}
     \label{fig:pocetna_strana}
 \end{figure}
+
+Nakon klika na \enquote{Prijava}, korisnik dolazi na ekran za autentifikaciju gde unosi svoju e-mail adresu i lozinku. Klikom na \enquote{Prijava se} pristupa svom nalogu, a ukoliko nema nalog može kliknuti na \enquote{Registrujte se}.
 
 \begin{figure}[h]
     \centering
@@ -350,12 +366,17 @@ Na slici \ref{fig:dijagram_komponenti} nalazi se predlog arhitekture sistema pri
     \label{fig:prijava}
 \end{figure}
 
+\newpage
+Nakon prijave, korisnik pregleda trenutni repertoar bioskopa sa prikazanim filmovima (Dina: Drugi deo, Openhajmer, Džon Vik: Četvrti čin). Klikom na željeni film prelazi na stranicu sa detaljima i terminima projekcija.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{gui/repertoar_filmova.png}
     \caption{Repertoar filmova}
     \label{fig:repertoar_filmova}
 \end{figure}
+
+Korisnik vidi detalje odabranog filma (opis, režiser, glumci, trajanje) i listu dostupnih termina sa cenama. Klikom na željeni termin (npr. 15.01.2026. u 20:00) prelazi na izbor sedišta u sali.
 
 \begin{figure}[h]
     \centering
@@ -364,6 +385,9 @@ Na slici \ref{fig:dijagram_komponenti} nalazi se predlog arhitekture sistema pri
     \label{fig:prikaz_termina_projekcije}
 \end{figure}
 
+\newpage
+Korisnik na interaktivnom prikazu sale bira slobodna sedišta klikom na njih (izabrana sedišta se označavaju crvenom bojom). Nakon izbora vidi ukupnu cenu i može kliknuti \enquote{Rezerviši} za rezervaciju ili \enquote{Kupi} za direktnu kupovinu.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{gui/biranje_sedista.png}
@@ -371,12 +395,17 @@ Na slici \ref{fig:dijagram_komponenti} nalazi se predlog arhitekture sistema pri
     \label{fig:biranje_sedista}
 \end{figure}
 
+Klikom na \enquote{Kupi}, korisnik dolazi na stranicu za plaćanje gde vidi pregled porudžbine i može iskoristiti bonus poene za popust. Unosi podatke o platnoj kartici i klikom na \enquote{Plati} završava kupovinu.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.88\textwidth]{gui/kupovina_karte.png}
     \caption{Kupovina karte}
     \label{fig:kupovina_karte}
 \end{figure}
+
+\newpage
+Nakon uspešnog plaćanja, korisnik dobija potvrdu sa e-kartom koja sadrži sve detalje (film, termin, sedišta, kod karte). E-karta se šalje na njegovu e-poštu, a prikazuje se i stanje bonus poena.
 
 \begin{figure}[h]
     \centering
