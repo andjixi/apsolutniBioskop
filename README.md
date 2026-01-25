@@ -15,7 +15,7 @@ Sistem omogucava:
 
 ## 📄 Dokumentacija
 
-Kompletna dokumentacija projekta nalazi se u fajlu `main.pdf` i ukljucuje:
+Kompletna dokumentacija projekta nalazi se u fajlu `main.pdf` unutar foldera `dokumentacija` i ukljucuje:
 - Analizu sistema i identifikaciju korisnika
 - Dijagrame slucajeva upotrebe (Use Case)
 - Dijagrame toka podataka (DFD)
@@ -27,7 +27,7 @@ Kompletna dokumentacija projekta nalazi se u fajlu `main.pdf` i ukljucuje:
 
 ## 🚀 Pokretanje demo aplikacije
 
-Demo aplikacija je napravljena u Next.js framework-u i prikazuje prototip korisnickog interfejsa.
+Demo aplikacija je napravljena u Next.js framework-u i prikazuje prototip korisnickog interfejsa. Snimak se može pronaći u okviru repozitorijuma. 
 
 ### Preduslovi
 

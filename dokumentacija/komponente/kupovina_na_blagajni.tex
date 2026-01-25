@@ -1,0 +1,110 @@
+\subsection{Slučaj upotrebe: Kupovina na blagajni}
+\label{uc:kupovina_na_blagajni}
+\vspace{10pt}
+
+\begin{itemize}
+    \item \textbf{Kratak opis:} Korisnik dolazi na blagajnu bioskopa kako bi kupio kartu, preuzeo prethodno rezervisanu kartu. Nakon kupljene karte, ili u slučaju gde korisnik već poseduje kartu, blagajnik korisniku nudi kupovinu grickalica i pića. Sistem evidentira sve obavljene transakcije i ažurira podatke u bazi.
+    
+    \item \textbf{Akteri:} 
+    \begin{itemize}
+        \item \textbf{Korisnik} - osoba koja dolazi na blagajnu.
+        \item \textbf{Blagajnik} - zaposleni koji obavlja prodaju i interakciju sa korisnikom.
+    \end{itemize}
+    \vspace{5pt}
+
+    \item \textbf{Preduslovi:} 
+    \begin{itemize}
+        \item Bioskop je otvoren i blagajna je u funkciji.
+        \item Korisnik je na blagajni i bar jedan blagajnik je dostupan.
+        \item Sistem je povezan sa bazom podataka. 
+        \item Blagajnik je ulogovan u sistem.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Postuslovi:} 
+    \begin{itemize}
+        \item Korisnik je uspešno izvršio transakciju zbog koje je došao na blagajnu, a sistem je ažurirao sve relevantne podatke u bazi.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Osnovni tok:}
+    \begin{enumerate}
+        \item Korisnik prilazi slobodnom blagajniku.
+        \item Korisnik može da izabere jednu od opcija:
+            \begin{itemize}
+                \item Ukoliko želi da kupi kartu, prelazi se na podtok P1.
+                \item Ukoliko želi da preuzme prethodno rezervisanu kartu, prelazi se na podtok P2.
+                \item Ukoliko želi da kupi grickalice ili piće, prelazi se na podtok P3.
+            \end{itemize}
+        \item Sistem prikazuje ukupnu cenu za izabrane artikle.
+        \item Blagajnik traži od korisnika način plaćanja (keš ili kartica).
+        \item Korisnik bira način plaćanja i izvršava transakciju.
+        \item Sistem obradjuje plaćanje.
+    \end{enumerate}
+
+    \item \textbf{Podtokovi:}
+    
+    P1: Kupovina karte
+    \begin{enumerate}
+        \item Blagajnik pita korisnika za film i termin koji želi da pogleda. 
+        \item Blagajnik pregleda podatke o traženom filmu i terminu. 
+        \item Sistem prikazuje dostupna sedišta za izabrani termin. 
+        \item Korisnik bira sedište/a koje želi da kupi. 
+        \item Blagajnik unosi izabrana sedišta u sistem. 
+        \item Blagajnik unosi karte u porudžbinu. 
+        \item Prelazi se na korak 2 osnovnog toka.
+    \end{enumerate}
+
+    P2: Preuzimanje rezervisane karte
+    \begin{enumerate}
+        \item Blagajnik traži od korisnika podatke o rezervaciji (npr. broj rezervacije, ime). 
+        \item Sistem pronalazi rezervaciju i prikazuje detalje. 
+        \item Blagajnik proverava validnost rezervacije.
+            \begin{itemize}
+                \item Ukoliko rezervacija nije validna, blagajnik obaveštava korisnika i vraća se na korak 2 osnovnog toka. 
+            \end{itemize}
+        \item Blagajnik potvrdjuje preuzimanje karte i unosi karte u porudžbinu. 
+        \item Prelazi se na korak 2 osnovnog toka.
+    \end{enumerate}
+
+    P3: Kupovina grickalica i pića
+    \begin{enumerate}
+        \item Blagajnik pita korisnika koje grickalice i piće želi da kupi.
+        \item Korisnik bira artikle koje želi da kupi.
+        \item Blagajnik unosi izabrane artikle u porudžbinu.
+        \item Prelazi se na korak 2 osnovnog toka.
+    \end{enumerate}
+    \vspace{5pt}
+    
+    \item \textbf{Alternativni tokovi:}
+    \begin{itemize}
+        \item \textbf{A1: Nema slobodnih sedišta:} Ukoliko nema slobodnih sedišta za izabrani termin, sistem obaveštava blagajnika koji zatim obaveštava korisnika i nudi alternativne termine ili filmove i prelazi na korak 1 podtoka P1.
+        \item \textbf{A2: Korisnik odustaje od procesa:} U bilo kom momentu korisnik može odlučiti da ne nastavi sa kupovinom ili preuzimanjem karte, i blagajnik zatim završava interakciju.
+        \item \textbf{A3: Neuspelo plaćanje:} Ukoliko plaćanje ne uspe, sistem obaveštava blagajnika koji zatim obaveštava korisnika i nudi opciju da pokuša ponovo ili odustane.
+        \item \textbf{A4: Nedostupnost artikala (grickalice i piće):} Ukoliko izabrani artikli nisu dostupni, blagajnik obaveštava korisnika i nudi alternativne artikle ili završava proces bez kupovine artikala.
+        \item \textbf{A5: Odustajanje od artikala:} Korisnik u bilo kom momentu može da odluči da ne kupi neki od artikala iz porudžbine pre nego što se predje na plaćanje, i blagajnik zatim ažurira porudžbinu u skladu sa tim.
+    \end{itemize}
+    \vspace{5pt}
+
+    \item \textbf{Specijalni zahtevi:} /
+    \vspace{5pt}
+    
+    \item \textbf{Dodatne informacije:} /
+    \vspace{5pt}
+\end{itemize}
+
+\subsubsection*{Dijagram aktivnosti}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../dijagrami/aktivnosti/dijagram_aktivnosti_kupovina_na_blagajni.jpg}
+    \caption{Dijagram aktivnosti: Kupovina na blagajni}
+    \label{fig:dijagram_aktivnosti_kupovina_na_blagajni}
+\end{figure}
+
+\subsubsection*{Dijagram sekvenci}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../dijagrami/sekvence/dijagram_sekvence_kupovina_na_blagajni.jpg}
+    \caption{Dijagram sekvenci: Kupovina na blagajni}
+    \label{fig:dijagram_sekvenci_kupovina_na_blagajni}
+\end{figure}

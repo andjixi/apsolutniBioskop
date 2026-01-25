@@ -1,0 +1,113 @@
+\subsection{Slučaj upotrebe: Izmena repertoara}
+\vspace{10pt}
+
+\begin{itemize}
+    \item \textbf{Kratak opis:} Menadžer pristupa aplikaciji kako bi izmenio repertoar filmova za svoj bioskop za sledeću nedelju. U raspored može da ubaci i nove filmove (koji su tek izašli ili su tek stigli u bioskop).
+Sistem Administrator dodaje u sistem filmove koji su tek izašli ili briše one koji su zastareli.
+    
+    \item \textbf{Akteri:} 
+    \begin{itemize}
+        \item \textbf{Menadžer} - osoba koja upravlja bioskopom.
+        \item \textbf{Sistem Administrator} - osoba koja upravlja sistemom.
+    \end{itemize}
+
+    \item \textbf{Preduslovi:} 
+    \begin{itemize}
+        \item Menadžer je povezan na internet, registrovan i ulogovan u aplikaciju kao menadžer.
+        \item Sistem Administrator je povezan na internet, registrovan i ulogovan u aplikaciju kao Sistem Administrator.
+        \item Sistem je povezan sa bazom podataka.
+    \end{itemize}
+    
+    \item \textbf{Postuslovi:} 
+    \begin{itemize}
+        \item Menadžer je uspešno podesio repertoar za sledeću nedelju.
+        \item Sistem Administrator je uspešno dodao ili obrisao film.
+    \end{itemize}
+    
+    \item \textbf{Osnovni tok:}
+    \begin{enumerate}
+        \item Sistem Administrator pristupa aplikaciji.
+        \item Sistem Administrator pritiska dugme "Izmeni dostupne filmove".
+            \begin{itemize}
+                \item Ukoliko pritisne "Dodaj film" izvršava se podtok P1.
+                \item Ukoliko pritisne "Ukloni film" izvršava se podtok P2.
+            \end{itemize}
+        \item Sistem šalje potvrdu uspešnosti.
+        \item Menadžer pristupa aplikaciji.
+        \item Pritiska dugme "Izmeni repertoar".
+        \item Sistem prikazuje listu termina sa znakom "+" pored svakog termina.
+        \item Menadžer pritiska taster "+" pored termina koji želi da izmeni.
+        \item Sistem otvara listu dostupnih filmova.
+        \item Menadžer bira film koji će se puštati u tom terminu.
+        \item Sistem vraća Menadžera na listu termina i umesto znaka "+" prikazuje naziv izabranog filma.
+        \item Kada Menadžer završi sa izmenama repertoara pritiska dugme "Sačuvaj".
+        \item Sistem šalje potvrdu uspešnosti.
+    \end{enumerate}
+
+    \item \textbf{Podtokovi:}
+    
+    P1: Dodavanje filma
+    \begin{enumerate}
+        \item Sistem Administrator unosi podatke o filmu koji želi da doda.
+        \item Sistem Administrator pritiska dugme "Sačuvaj".
+    \end{enumerate}
+
+    P2: Uklanjanje filma
+    \begin{enumerate}
+        \item Sistem Administrator bira film koji želi da ukloni.
+        \item Sistem Administrator pritiska dugme "Ukloni".
+    \end{enumerate}
+    
+    \item \textbf{Alternativni tokovi:}
+    \begin{itemize}
+        \item A1: Menadžer odustaje od procesa: - U bilo kom momentu može prekinuti proces, a sistem poništava izmene.
+        \item A2: Sistem Administrator odustaje od procesa: - U bilo kom momentu može prekinuti proces, a sistem poništava izmene.
+    \end{itemize}
+
+    \item \textbf{Specijalni zahtevi:} /
+    
+    \item \textbf{Dodatne informacije:} /
+\end{itemize}
+
+\subsection*{Dijagram aktivnosti}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=0.73\textwidth]{../dijagrami/aktivnosti/izmena_repertoara_dijagram_aktivnosti.jpg}
+}
+    \caption{Dijagram aktivnosti slučaja upotrebe Izmena repertoara}
+    \label{fig:aktivnost-izmena-repertoara}
+\end{figure}
+
+\newpage
+\subsubsection*{Dijagrami sekvence}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.2\textwidth]{../dijagrami/sekvence/izmena_repertoara_upravljanje_filmovima_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence za upravljanje filmovima}
+    \label{fig:sekvenca-upravljanje-filmovima}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1\textwidth]{../dijagrami/sekvence/izmena_repertoara_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence za izmenu repertoara}
+    \label{fig:sekvena-izmena-repertoara}
+\end{figure}
+
+\newpage
+\subsubsection*{BPMN dijagram}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.3\textwidth]{../dijagrami/bpmn/izmena_repertoara_bpmn_dijagram.jpg}
+}
+    \caption{BPMN dijagram slučaja upotrebe Izmena repertoara}
+    \label{fig:bpmn-izmena-repertoara}
+\end{figure}
+

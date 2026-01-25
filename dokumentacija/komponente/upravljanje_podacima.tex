@@ -1,0 +1,73 @@
+
+\subsection{Slučaj upotrebe: Upravljanje podacima}
+\vspace{10pt}
+
+\begin{itemize}
+    \item \textbf{Kratak opis:} Sistem Administrator dodaje ili briše podatke iz baze.
+    
+    \item \textbf{Akteri:} 
+    \begin{itemize}
+        \item \textbf{Sistem Administrator} - osoba koja upravlja sistemom.
+    \end{itemize}
+
+    \item \textbf{Preduslovi:} 
+    \begin{itemize}
+        \item Sistem Administrator je povezan na internet, registrovan i ulogovan u aplikaciju kao Sistem Administrator.
+        \item Sistem je povezan sa bazom podataka.
+    \end{itemize}
+    
+    \item \textbf{Postuslovi:} 
+    \begin{itemize}
+        \item Sistem Administrator je uspešno izmenio podatke.
+    \end{itemize}
+    
+    \item \textbf{Osnovni tok:}
+    \begin{enumerate}
+        \item Sistem Administrator pristupa aplikaciji.
+        \item Sistem Administrator pritiska dugme "Upravljaj podacima".
+        \item Sistem prikazuje prazno polje za unos teksta i dugme "Izvrši".
+        \item Sistem Administrator u polje unosi SQL naredbu.
+        \item Sistem Administrator pritiska dugme "Izvrši".
+        \item Sistem izvršava SQL naredbu.
+        \item Sistem šalje potvrdu uspešnosti.
+    \end{enumerate}
+
+    \item \textbf{Podtokovi:} /
+    \item \textbf{Alternativni tokovi:} /
+    \item \textbf{Specijalni zahtevi:} /
+    \item \textbf{Dodatne informacije:} /
+\end{itemize}
+
+\newpage
+\subsubsection*{Dijagram aktivnosti}
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.3\textwidth]{../dijagrami/aktivnosti/upravljanje_podacima_dijagram_aktivnosti.jpg}
+}
+    \caption{Dijagram aktivnosti slučaja upotrebe Upravljanje podacima}
+    \label{fig:aktivnost-upravljanje-podacima}
+\end{figure}
+
+\newpage
+\subsubsection*{Dijagram sekvence}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.2\textwidth]{../dijagrami/sekvence/upravljanje_podacima_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence slučaja upotrebe Upravljanje podacima}
+    \label{fig:sekvenca-upravljanje-podacima}
+\end{figure}
+
+\newpage
+\subsubsection*{Dijagram stanja filma}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1\textwidth]{../dijagrami/stanja/dijagram_stanja_filma.jpg}
+}
+    \caption{Dijagram stanja filma}
+    \label{fig:stanje-filma}
+\end{figure}

@@ -1,0 +1,96 @@
+\subsection{Slučaj upotrebe: Autorizacija}
+\label{uc:autorizacija}
+\vspace{10pt}
+
+\begin{itemize}
+    \item \textbf{Kratak opis:} Proces identifikacije i provere prava pristupa aktera (korisnika ili zaposlenog) kako bi pristupili zaštićenim delovima sistema u skladu sa svojom ulogom.
+\vspace{10pt}
+    
+    \item \textbf{Akteri:} 
+    \begin{itemize}
+        \item Korisnik
+        \item Menadžer
+        \item Sistem administrator
+        \item Blagajnik
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Preduslovi:} 
+    \begin{itemize}
+        \item Akter poseduje validan nalog u sistemu.
+        \item Aplikacija je dostupna.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Postuslovi:} 
+    \begin{itemize}
+        \item Akter je uspešno ulogovan i sistem mu prikazuje odgovarajući meni u zavisnosti od uloge.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Osnovni tok:}
+    \begin{enumerate}
+        \item Akter bira opciju za prijavu (Login).
+        \item Sistem prikazuje formu za unos kredencijala (Korisničko ime/Email i Lozinka).
+        \item Akter unosi svoje podatke i potvrđuje prijavu.
+        \item Sistem pristupa bazi podataka, proverava ispravnost lozinke.
+        \item Sistem proverava status naloga aktera (aktivan, blokiran, suspendovan).
+        \item Sistem utvrđuje ulogu aktera (Korisnik, Menadžer, Administrator, Blagajnik).
+        \item Sistem ažurira polje 'Poslednje prijavljivanje' (\textit{Last Login Time}) u bazi podataka za taj nalog.
+        \item Sistem odobrava pristup i preusmerava aktera na odgovarajuću početnu stranicu/kontrolnu tablu.
+    \end{enumerate}
+    
+    \item \textbf{Podtokovi:} /
+    \vspace{5pt}
+    
+    \item \textbf{Alternativni tokovi:}
+    \begin{itemize}
+        \item \textbf{A1: Pogrešni podaci:} Sistem obaveštava aktera o neuspešnoj prijavi. Akteru se omogućava ponovni pokušaj.
+        \item \textbf{A2: Blokiran nalog:} Sistem prikazuje poruku o tome da je nalog neaktivan/blokiran i upućuje aktera na kontakt podrške ili povratak na početnu stranu.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Specijalni zahtevi:}
+    \begin{itemize}
+        \item Sistem beleži pokušaje prijavljivanja i privremeno blokira nalog nakon pet neuspelih pokušaja.
+    \end{itemize}
+    \vspace{5pt}
+    
+    \item \textbf{Dodatne informacije:} /
+    \vspace{5pt}
+\end{itemize}
+
+\newpage
+
+\begin{figure}[H]
+\subsubsection*{Dijagram aktivnosti}
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.2\textwidth]{../dijagrami/aktivnosti/autorizacija_dijagram_aktivnosti.jpg}
+}
+    \caption{Dijagram aktivnosti naloga za autorizaciju korisnika}
+    \label{fig:aktivnost-autorizacija}
+\end{figure}
+
+\newpage
+\subsubsection*{Dijagram sekvence}
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1.2\textwidth]{../dijagrami/sekvence/autorizacija_dijagram_sekvence.jpg}
+}
+    \caption{Dijagram sekvence naloga za autorizaciju korisnika}
+    \label{fig:sekvenca-autorizacija}
+\end{figure}
+
+\newpage
+\subsubsection*{Dijagram stanja Naloga}
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{%
+  \includegraphics[width=1\textwidth]{../dijagrami/stanja/dijagram_stanja_naloga_autorizacija.jpg}
+}
+    \caption{Dijagram stanja naloga}
+    \label{fig:stanje-autorizacija}
+\end{figure}

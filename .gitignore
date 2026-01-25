@@ -8,7 +8,11 @@
 *.fdb_latexmk
 *.synctex.gz
 *.toc
-
+*.out
+*.bbl
+*.blg
+*.nav
+*.snm
 
 #DEMO gitignore
 
