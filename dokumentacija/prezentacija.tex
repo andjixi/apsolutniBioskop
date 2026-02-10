@@ -1,0 +1,345 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[serbian]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{array}
+
+% Minimalistička tema
+\usetheme{default}
+\usecolortheme{default}
+
+% Moderna paleta boja - tamno plava sa crvenim akcentom (bioskop tematika)
+\definecolor{darkcharcoal}{RGB}{45, 52, 54}
+\definecolor{slategray}{RGB}{99, 110, 114}
+\definecolor{accent}{RGB}{192, 57, 43}
+\definecolor{accentlight}{RGB}{231, 76, 60}
+\definecolor{lightbg}{RGB}{250, 250, 252}
+\definecolor{softwhite}{RGB}{255, 255, 255}
+
+% Pozadina slajdova
+\setbeamercolor{background canvas}{bg=lightbg}
+
+% Naslovi
+\setbeamercolor{frametitle}{fg=darkcharcoal,bg=}
+\setbeamercolor{title}{fg=darkcharcoal}
+\setbeamercolor{subtitle}{fg=slategray}
+
+% Struktura i tekst
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{normal text}{fg=darkcharcoal}
+\setbeamercolor{item}{fg=accent}
+\setbeamercolor{subitem}{fg=slategray}
+
+% Blokovi
+\setbeamercolor{block title}{bg=accent,fg=white}
+\setbeamercolor{block body}{bg=softwhite,fg=darkcharcoal}
+
+% Footer
+\setbeamercolor{footline}{fg=slategray}
+
+% Fontovi
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{title}{size=\huge,series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+% Itemize stilovi
+\setbeamertemplate{itemize items}{\textcolor{accent}{\textbullet}}
+\setbeamertemplate{itemize subitem}{\textcolor{slategray}{\small\textbullet}}
+
+% Ukloni navigaciju
+\setbeamertemplate{navigation symbols}{}
+
+% Jednostavan footline sa brojem slajda
+\setbeamertemplate{footline}{
+  \hfill\textcolor{slategray}{\insertframenumber/\inserttotalframenumber}\hspace{10pt}\vspace{5pt}
+}
+
+% Frametitle sa linijom
+\setbeamertemplate{frametitle}{
+  \vspace{8pt}
+  \insertframetitle
+  \vspace{2pt}
+  \textcolor{accent}{\rule{\textwidth}{1.5pt}}
+}
+
+\begin{document}
+
+% Custom title page
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+  % Accent line at top
+  \fill[accent] (current page.north west) rectangle ([yshift=-3pt]current page.north east);
+  % Accent line at bottom
+  \fill[accent] (current page.south west) rectangle ([yshift=3pt]current page.south east);
+\end{tikzpicture}
+
+\vspace{20pt}
+\centering
+{\huge\bfseries\textcolor{darkcharcoal}{Apsolutni bioskop}\\[5pt]
+\Large\textcolor{darkcharcoal}{Informacioni sistem bioskopa}}
+
+\vspace{25pt}
+{\small\textcolor{darkcharcoal}{Marko Paunović, Bogdan Stojadinović, Anđela Jovanović}}
+
+\vspace{10pt}
+{\footnotesize\textcolor{slategray}{Matematički fakultet, Univerzitet u Beogradu}}
+
+\vspace{15pt}
+{\small\textcolor{accent}{Februar 2026.}}
+\end{frame}
+
+\section{Uvod}
+
+\begin{frame}
+\frametitle{O projektu}
+\begin{itemize}
+\item Informacioni sistem za upravljanje bioskopima
+\item Automatizacija ključnih poslovnih procesa
+\end{itemize}
+
+\vspace{15pt}
+\textbf{Cilj:} Unapređenje korisničkog iskustva i efikasnije poslovanje
+\end{frame}
+
+\section{Korisnici sistema}
+
+\begin{frame}
+\frametitle{Akteri}
+\begin{itemize}
+\item Korisnik
+\item Blagajnik
+\item Menadžer
+\item Sistem administrator
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slučajevi upotrebe -- pregled}
+\begin{enumerate}
+\item \textbf{Online kupovina i rezervacija karte} -- Korisnik
+\item \textbf{Kupovina na blagajni} -- Blagajnik, Korisnik
+\item \textbf{Registracija} -- Korisnik (Gost)
+\item \textbf{Autorizacija} -- Svi akteri
+\item \textbf{Upravljanje podacima} -- Sistem Administrator
+\item \textbf{Dodavanje novih zaposlenih} -- Sistem Administrator, Menadžer
+\item \textbf{Izmena repertoara} -- Menadžer, Sistem Administrator
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Online kupovina i rezervacija karte}
+\textbf{Akter:} Korisnik 
+
+\vspace{8pt}
+\begin{itemize}
+\item Korisnik pregleda repertoar i bira film
+\item Sistem prikazuje termine i cene karata
+\item Korisnik bira termin i sedište
+\item Korisnik bira kupovinu ili rezervaciju
+\item Sistem šalje potvrdu o uspešnosti
+\end{itemize}
+
+\vspace{5pt}
+\textbf{Kupovina:} Provera bonus poena $\rightarrow$ Plaćanje $\rightarrow$ E-karta\\
+\textbf{Rezervacija:} Ažuriranje podataka $\rightarrow$  Potvrda o rezervaciji
+\end{frame}
+
+\begin{frame}
+\frametitle{Kupovina na blagajni}
+\textbf{Akteri:} Blagajnik, Korisnik 
+
+\vspace{8pt}
+\begin{itemize}
+\item Korisnik prilazi blagajniku i bira opciju:
+  \begin{itemize}
+  \item Kupovina karte
+  \item Preuzimanje rezervisane karte
+  \item Kupovina grickalica i pića
+  \end{itemize}
+\item Sistem prikazuje ukupnu cenu
+\item Korisnik bira način plaćanja (keš ili kartica)
+\item Sistem obrađuje plaćanje
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Registracija i Autorizacija}
+\begin{columns}[t]
+\column{0.5\textwidth}
+\textbf{Registracija}\\
+{\small Akter: Korisnik (Gost)}
+\begin{itemize}
+\item Korisnik bira registraciju
+\item Unosi podatke
+\item Sistem validira podatke
+\item Sistem šalje verifikacioni email
+\item Korisnik potvrđuje - nalog aktivan
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Autorizacija}\\
+{\small Akteri: Svi korisnici sistema}
+\begin{itemize}
+\item Akter bira prijavu
+\item Unosi kredencijala
+\item Sistem proverava podatke
+\item Sistem utvrđuje ulogu aktera
+\item Preusmeravanje na odgovarajuću stranicu
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dodavanje novih zaposlenih}
+\textbf{Akteri:} Sistem Administrator, Menadžer
+
+\vspace{8pt}
+\begin{itemize}
+\item Menadžer šalje zahtev administratoru
+\item Administrator unosi podatke u sistem 
+\item Sistem validira podatke i proverava duplikate
+\item Sistem proverava privilegije za dodelu uloge
+\item Kreiranje naloga i slanje kredencijala novom zaposlenom
+\item Slanje potvrde o uspešnosti menadžeru
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Upravljanje podacima}
+\textbf{Akter:} Sistem Administrator
+
+\vspace{8pt}
+\begin{itemize}
+\item Administrator pritiska dugme "Upravljaj podacima"
+\item Sistem prikazuje polje za unos SQL naredbe
+\item Administrator unosi naredbu i pritiska "Izvrši"
+\item Sistem izvršava naredbu i šalje potvrdu
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Izmena repertoara}
+\textbf{Akteri:} Menadžer, Sistem Administrator
+
+\vspace{8pt}
+\begin{itemize}
+\item Sistem Administrator pritiska dugme "Izmeni dostupne filmove":
+  \begin{itemize}
+  \item Dodavanje filma -- unos podataka i čuvanje
+  \item Uklanjanje filma -- biranje filma i brisanje 
+  \end{itemize}
+\item Menadžer pritiska "Izmeni repertoar"
+\item Sistem prikazuje listu termina
+\item Menadžer dodeljuje filmove terminima
+\item Menadžer čuva izmene -- sistem potvrđuje uspešnost
+\end{itemize}
+\end{frame}
+
+\section{Model podataka}
+
+\begin{frame}
+\frametitle{Struktura baze podataka}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Korisnik
+\item Karta
+\item Projekcija
+\item Film
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Bioskop
+\item Sala
+\item Sedište
+\item Slobodna sedišta
+\item Zaposlen
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Arhitektura sistema}
+
+\begin{frame}
+\frametitle{Arhitektura sistema}
+
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\textbf{Troslojna arhitektura:}
+\begin{enumerate}
+\item Prezentacioni sloj
+\begin{itemize}
+  \item HTML, CSS, JavaScript
+  \item Responzivan dizajn
+\end{itemize}
+\item Logički sloj
+\begin{itemize}
+  \item ASP.NET Core
+\end{itemize}
+\item Sloj podataka
+\begin{itemize}
+  \item PostgreSQL baza
+  \item Relacioni model
+\end{itemize}
+
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Prednosti:}
+\begin{itemize}
+\item Široka dostupnost
+\item Bezbednost podataka
+\item Skalabilnost
+\item Jednostavno održavanje
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Demo video}
+\begin{frame}
+\frametitle{Demo video}
+\includegraphics[width=1\textwidth]{../gui/pocetna_strana.png}
+\end{frame}
+
+\section{Zaključak}
+
+\begin{frame}
+\frametitle{Zaključak}
+\textbf{Dalji razvoj:}
+\begin{itemize}
+\item Mobilna aplikacija
+\item Sistem preporuka
+\item Integracija sa IMDb
+\item Napredna analitika
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+  % Accent line at top
+  \fill[accent] (current page.north west) rectangle ([yshift=-3pt]current page.north east);
+  % Accent line at bottom
+  \fill[accent] (current page.south west) rectangle ([yshift=3pt]current page.south east);
+\end{tikzpicture}
+
+\centering
+\vspace{60pt}
+{\Huge\bfseries\textcolor{darkcharcoal}{Hvala na pažnji!}}
+
+\vspace{25pt}
+{\Large\textcolor{accent}{Pitanja?}}
+
+\vspace{40pt}
+{\small\textcolor{slategray}{Marko Paunović, Bogdan Stojadinović, Anđela Jovanović}}
+\end{frame}
+
+\end{document}
